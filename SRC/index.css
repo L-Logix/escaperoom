@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98.0%;
+    --foreground: 221 39% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 221 39% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 221 39% 11%;
+
+    --primary: 222 47% 11.2%;
+    --primary-foreground: 210 40% 98.0%;
+
+    --secondary: 217 33% 17.5%;
+    --secondary-foreground: 210 40% 98.0%;
+
+    --muted: 217 33% 97.5%;
+    --muted-foreground: 215 16% 47.0%;
+
+    --accent: 220 13% 91.0%;
+    --accent-foreground: 222 47% 11.2%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98.0%;
+
+    --border: 216 34% 91.9%;
+    --input: 216 34% 91.9%;
+    --ring: 222 47% 11.2%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Custom Classes */
+  .glassmorphism {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-glass;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-blue text-transparent bg-clip-text;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 py-24;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-6 text-escape-dark;
+  }
+
+  .nav-link {
+    @apply relative inline-block px-2 py-1 text-escape-text hover:text-escape-accent transition-colors duration-300 
+           after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[2px] after:bottom-0 after:left-0 
+           after:bg-escape-accent after:origin-bottom-right after:transition-transform after:duration-300 
+           hover:after:scale-x-100 hover:after:origin-bottom-left;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background 
+           transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring 
+           focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-escape-dark text-white hover:bg-escape-medium px-4 py-2;
+  }
+
+  .btn-secondary {
+    @apply btn bg-escape-light text-escape-dark hover:bg-escape-light/80 px-4 py-2;
+  }
+
+  .btn-accent {
+    @apply btn bg-escape-accent text-white hover:bg-escape-accent/90 px-4 py-2;
+  }
+
+  .room-card {
+    @apply relative overflow-hidden rounded-lg transition-all duration-500 hover:shadow-lg;
+  }
+
+  .room-card-content {
+    @apply absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 
+           hover:opacity-100 transition-opacity duration-300 ease-in-out;
+  }
+}
+
+/* Animated underline effect */
+.animated-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.animated-underline:hover::after,
+.animated-underline:focus::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Scroll animations */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms, transform 400ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 300ms, transform 300ms;
+}
